@@ -1,5 +1,12 @@
 # minimind-on-rocm
 
+![license](https://img.shields.io/badge/license-Apache--2.0-blue)
+![ROCm](https://img.shields.io/badge/ROCm-7.2-E31837)
+![GPU](https://img.shields.io/badge/GPU-RX%207800%20XT%2016GB-ED1C24)
+![WSL2](https://img.shields.io/badge/WSL2-Ubuntu%2024.04-22A6F2)
+![Python](https://img.shields.io/badge/python-3.12-3776AB)
+
+
 在 **AMD 消费级显卡**（RX 7800 XT / gfx1101，16 GB）+ **Windows 11 + WSL2 + ROCm 7.2** 上，
 跑通 [MiniMind](https://github.com/jingyaogong/minimind) 的推理与微调链路，并提供：
 
@@ -10,6 +17,21 @@
 
 > 上游项目：jingyaogong/minimind（Apache-2.0）。**本仓库不包含上游代码，也不声称模型是本人训练**，
 > 详见下方「范围与贡献」。
+
+## 架构与流程
+
+```mermaid
+flowchart LR
+    A["Windows 11<br/>Adrenalin 26.x"] -->|"/dev/dxg 透传"| B["WSL2 Ubuntu 24.04"]
+    B --> C["ROCm 7.2<br/>librocdxg + libhsa"]
+    C --> D["PyTorch 2.9.1+rocm7.2"]
+    D --> E["MiniMind-3 64M"]
+    E --> F["LoRA 微调<br/>rank / lr / data"]
+    F --> G["多 prompt 定性检查<br/>身份 / 任务 / 闲聊"]
+    G -->|"发现退化"| H["调整单一变量"]
+    H --> F
+    G -->|"通过"| I["产物：LoRA 权重 + 实验记录"]
+```
 
 ## 为什么做这个
 

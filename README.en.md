@@ -1,11 +1,33 @@
 # minimind-on-rocm
 
+![license](https://img.shields.io/badge/license-Apache--2.0-blue)
+![ROCm](https://img.shields.io/badge/ROCm-7.2-E31837)
+![GPU](https://img.shields.io/badge/GPU-RX%207800%20XT%2016GB-ED1C24)
+![WSL2](https://img.shields.io/badge/WSL2-Ubuntu%2024.04-22A6F2)
+![Python](https://img.shields.io/badge/python-3.12-3776AB)
+
+
 Run [MiniMind](https://github.com/jingyaogong/minimind) (64M tiny LLM) on an **AMD consumer GPU**
 (Radeon RX 7800 XT, gfx1101, 16 GB) under **Windows 11 + WSL2 + ROCm 7.2** — inference, LoRA fine-tuning,
 and a small experiment framework.
 
 > Upstream: jingyaogong/minimind (Apache-2.0). This repository does **not** contain upstream code,
 > model weights, or pretraining/RLHF pipelines. Scope is stated explicitly below.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["Windows 11<br/>Adrenalin 26.x"] -->|"/dev/dxg GPU passthrough"| B["WSL2 Ubuntu 24.04"]
+    B --> C["ROCm 7.2<br/>librocdxg + libhsa"]
+    C --> D["PyTorch 2.9.1+rocm7.2"]
+    D --> E["MiniMind-3 64M"]
+    E --> F["LoRA fine-tuning<br/>rank / lr / data"]
+    F --> G["Multi-prompt checks<br/>identity / task / chat"]
+    G -->|"regression found"| H["change one variable"]
+    H --> F
+    G -->|"pass"| I["artifacts: LoRA weights + logs"]
+```
 
 ## Why
 
