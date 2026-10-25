@@ -64,11 +64,13 @@ python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_
 # 3. 拉取上游并下载权重
 git clone --depth 1 https://github.com/jingyaogong/minimind
 modelscope download --model gongjy/minimind-3 --local_dir ./minimind/minimind-3
+modelscope download --model gongjy/minimind-3-pytorch full_sft_768.pth --local_dir ./minimind/pth_cache
+mkdir -p minimind/out && cp minimind/pth_cache/full_sft_768.pth minimind/out/
 
 # 4. 生成中文身份数据并训练 LoRA
 python scripts/make_identity_zh.py --out minimind/dataset/lora_identity_zh.jsonl
 cd minimind/trainer && python train_lora.py --lora_rank 8 --lora_name zh_r8 \
-  --from_weight full_sft_sub --data_path ../dataset/lora_identity_zh.jsonl \
+  --from_weight full_sft --data_path ../dataset/lora_identity_zh.jsonl \
   --epochs 3 --batch_size 4 --max_seq_len 340 --learning_rate 1e-4 --num_workers 0
 ```
 
