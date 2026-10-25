@@ -9,7 +9,8 @@ p.add_argument("--csv", default="experiments.csv")
 a = p.parse_args()
 
 txt = open(a.log, errors="ignore").read()
-losses = [float(x) for x in re.findall(r"loss:\s*([0-9.]+)", txt)]
+losses = [float(x) for x in re.findall(
+    r"Epoch:\[\d+/\d+\]\(\d+/\d+\), loss:\s*([0-9.]+)", txt)]
 lora = re.search(r"LoRA 参数量:\s*([0-9.]+)\s*M", txt)
 elapsed = re.search(r"elapsed[= ](\d+)", txt)
 status = "OK" if ("Traceback" not in txt and "HSA exception" not in txt) else "FAIL"

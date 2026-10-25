@@ -1,0 +1,117 @@
+{
+  "device": "Radeon RX 7800 XT 16GB (gfx1101)",
+  "stack": "WSL2 Ubuntu 24.04.5 / ROCm 7.2 / torch 2.9.1+rocm7.2.0",
+  "note": "parsed from training logs; loss values are per-batch and noisy",
+  "runs": [
+    {
+      "run": "e0",
+      "epochs": 2,
+      "steps_per_epoch": 23,
+      "total_steps_logged": 6,
+      "first_loss": 1.9986,
+      "final_loss": 1.7898,
+      "last3_mean": 1.5788,
+      "lora_params_M": 0.393,
+      "status": "ok"
+    },
+    {
+      "run": "e1",
+      "epochs": 2,
+      "steps_per_epoch": 23,
+      "total_steps_logged": 6,
+      "first_loss": 2.0828,
+      "final_loss": 1.924,
+      "last3_mean": 1.7533,
+      "lora_params_M": 0.197,
+      "status": "ok"
+    },
+    {
+      "run": "e2",
+      "epochs": 2,
+      "steps_per_epoch": 23,
+      "total_steps_logged": 6,
+      "first_loss": 1.8512,
+      "final_loss": 1.6806,
+      "last3_mean": 1.4048,
+      "lora_params_M": 0.786,
+      "status": "ok"
+    },
+    {
+      "run": "e3",
+      "epochs": 2,
+      "steps_per_epoch": 23,
+      "total_steps_logged": 6,
+      "first_loss": 2.0208,
+      "final_loss": 1.851,
+      "last3_mean": 1.6584,
+      "lora_params_M": 0.786,
+      "status": "ok"
+    },
+    {
+      "run": "zh3_r16",
+      "epochs": 3,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 12,
+      "first_loss": 1.5521,
+      "final_loss": 1.6854,
+      "last3_mean": 1.6106,
+      "lora_params_M": 0.393,
+      "status": "ok"
+    },
+    {
+      "run": "zh3_r32",
+      "epochs": 3,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 12,
+      "first_loss": 1.5232,
+      "final_loss": 1.548,
+      "last3_mean": 1.4736,
+      "lora_params_M": 0.786,
+      "status": "ok"
+    },
+    {
+      "run": "zh3_r8",
+      "epochs": 3,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 12,
+      "first_loss": 1.569,
+      "final_loss": 1.8231,
+      "last3_mean": 1.7264,
+      "lora_params_M": 0.197,
+      "status": "ok"
+    },
+    {
+      "run": "zh_r16",
+      "epochs": 2,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 10,
+      "first_loss": 1.7756,
+      "final_loss": 1.4104,
+      "last3_mean": 1.3351,
+      "lora_params_M": 0.393,
+      "status": "ok"
+    },
+    {
+      "run": "zh_r32",
+      "epochs": 2,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 10,
+      "first_loss": 1.7556,
+      "final_loss": 1.3228,
+      "last3_mean": 1.2711,
+      "lora_params_M": 0.786,
+      "status": "ok"
+    },
+    {
+      "run": "zh_r8",
+      "epochs": 2,
+      "steps_per_epoch": 98,
+      "total_steps_logged": 10,
+      "first_loss": 1.7895,
+      "final_loss": 1.4788,
+      "last3_mean": 1.3808,
+      "lora_params_M": 0.197,
+      "status": "ok"
+    }
+  ]
+}

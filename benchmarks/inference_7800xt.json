@@ -1,0 +1,30 @@
+{
+  "device": "Radeon RX 7800 XT 16GB (gfx1101), AMD Adrenalin 26.10.1",
+  "results": [
+    {
+      "workload": "Qwen2.5-7B-Instruct Q4_K_M, 8192 ctx, full GPU offload",
+      "engine": "LM Studio 0.4.26 + ROCm llama.cpp runtime 2.62.1",
+      "tokens_per_sec": 95.92,
+      "ttft_s": 0.08,
+      "vram_peak_gb": 5.6
+    },
+    {
+      "workload": "MiniMind-3 64M, fp16, 320 token budget",
+      "engine": "transformers 4.57.6 / torch 2.9.1+rocm7.2.0",
+      "tokens_per_sec": 231.84,
+      "note": "short outputs are dominated by prefill; 115 tok/s for 320-token answers"
+    },
+    {
+      "workload": "fp16 matmul 4096x4096, 20 iterations",
+      "engine": "torch 2.9.1+rocm7.2.0 (hipBLAS)",
+      "tflops": 45.7,
+      "note": "theoretical fp16 peak of 7800 XT ~74 TFLOPS, 61% achieved"
+    },
+    {
+      "workload": "LoRA training 64M model, bs=4, seq=340",
+      "engine": "torch 2.9.1+rocm7.2.0",
+      "sec_per_step": 1.5,
+      "note": "rank 8/16/32 do not change step time significantly; backbone dominates"
+    }
+  ]
+}
