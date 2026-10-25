@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+wheels/
+out/
+checkpoints/
+logs/
+minimind/
+*.pth
+.DS_Store
